@@ -9,8 +9,47 @@ VERA_HI = $9F22
 VERA_DATA = $9F23
 
         lda #0
-        sta VERA_CTRL ;Choosing Data register 0
-        jsr LOAD
+        sta VERA_CTRL   ;Choosing Data register 0
+        jsr Load
+        jsr Enable
+
+        rts             ;End program
+
+;************************************************************************
+;Enable sprite
+;************************************************************************
+        lda #0
+        sta VERA_LOW
+        lda #$40
+        sta VERA_MID
+        lda #$1F
+        sta VERA_HI
+        lda #1
+        sta VERA_DATA
+
+        lda #0
+        sta VERA_LOW
+        lda #$50
+        sta VERA_MID
+        lda #$1F
+        sta VERA_HI
+        lda #0
+        sta VERA_DATA
+        lda #$82
+        sta VERA_DATA
+        lda #0
+        sta VERA_DATA
+        sta VERA_DATA
+        sta VERA_DATA
+        sta VERA_DATA
+        lda #%0000 1100
+        sta VERA_DATA
+        lda #%0101 0000
+        sta VERA_DATA
+
+        rts
+
+
 
 
 
@@ -18,13 +57,14 @@ VERA_DATA = $9F23
 ;************************************************************************
 ;Load sprite into VRAM
 ;************************************************************************
-LOAD:   sta VERA_LOW
-        lda $40
+Load:   sta VERA_LOW
+        lda #$40
         sta VERA_MID
-        lda $10
+        lda #$10
+        sta VERA_HI
         ldy #0
 
-LOOP:   lda SPRITE0,y
+Loop:   lda SPRITE0,y
         sta VERA_DATA
         dey
         bne LOOP:
