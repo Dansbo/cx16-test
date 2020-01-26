@@ -10,6 +10,7 @@ VERA_DATA = $9F23
 
         lda #0
         sta VERA_CTRL ;Choosing Data register 0
+        jsr LOAD
 
 
 
@@ -17,11 +18,11 @@ VERA_DATA = $9F23
 ;************************************************************************
 ;Load sprite into VRAM
 ;************************************************************************
-        sta VERA_LOW
+LOAD:   sta VERA_LOW
         lda $40
         sta VERA_MID
         lda $10
-        ldy #255
+        ldy #256
 
 LOOP:   dey
         lda SPRITE0,y
