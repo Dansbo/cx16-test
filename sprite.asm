@@ -22,10 +22,9 @@ LOAD:   sta VERA_LOW
         lda $40
         sta VERA_MID
         lda $10
-        ldy #256
+        ldy #0
 
-LOOP:   dey
-        lda SPRITE0,y
+LOOP:   lda SPRITE0,y
         sta VERA_DATA
         dey
         bne LOOP:
