@@ -42,9 +42,9 @@ Enable: lda #0
         sta VERA_DATA
         sta VERA_DATA
         sta VERA_DATA
-        lda #%00001100
+        lda #$F
         sta VERA_DATA
-        lda #%01010000
+        lda #$50
         sta VERA_DATA
 
         rts
