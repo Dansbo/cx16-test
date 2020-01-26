@@ -18,7 +18,7 @@ VERA_DATA = $9F23
 ;************************************************************************
 ;Enable sprite
 ;************************************************************************
-        lda #0
+Enable: lda #0
         sta VERA_LOW
         lda #$40
         sta VERA_MID
@@ -42,9 +42,9 @@ VERA_DATA = $9F23
         sta VERA_DATA
         sta VERA_DATA
         sta VERA_DATA
-        lda #%0000 1100
+        lda #%00001100
         sta VERA_DATA
-        lda #%0101 0000
+        lda #%01010000
         sta VERA_DATA
 
         rts
@@ -67,7 +67,7 @@ Load:   sta VERA_LOW
 Loop:   lda SPRITE0,y
         sta VERA_DATA
         dey
-        bne LOOP:
+        bne Loop:
         rts
 
 ;************************************************************************
