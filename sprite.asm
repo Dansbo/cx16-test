@@ -8,16 +8,17 @@ VERA_MID = $9F21
 VERA_HI = $9F22
 VERA_DATA = $9F23
 
-        stz VERA_CTRL ;Choosing Data register 0
+        lda #0
+        sta VERA_CTRL ;Choosing Data register 0
 
 
 
 
 ;************************************************************************
-;Define sprite
+;Load sprite into VRAM
 ;************************************************************************
-        stz VERA_LOW
-        lda $04
+        sta VERA_LOW
+        lda $40
         sta VERA_MID
         lda $10
         ldy #255
