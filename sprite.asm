@@ -42,7 +42,7 @@ Enable: lda #0
         sta VERA_DATA
         sta VERA_DATA
         sta VERA_DATA
-        lda #$F
+        lda #$0F
         sta VERA_DATA
         lda #$50
         sta VERA_DATA
