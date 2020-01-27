@@ -8,8 +8,6 @@ VERA_MID = $9F21
 VERA_HI = $9F22
 VERA_DATA = $9F23
 
-        lda #0
-        sta VERA_CTRL   ;Choosing Data register 0
         jsr Load
         jsr Enable
 
@@ -57,7 +55,9 @@ Enable: lda #0
 ;************************************************************************
 ;Load sprite into VRAM
 ;************************************************************************
-Load:   sta VERA_LOW
+Load:   lda #$00
+        sta VERA_CTRL
+        sta VERA_LOW
         lda #$40
         sta VERA_MID
         lda #$10
