@@ -40,7 +40,7 @@ Enable: lda #0
         sta VERA_DATA
         sta VERA_DATA
         sta VERA_DATA
-        lda #$0F
+        lda #%00001100
         sta VERA_DATA
         lda #$50
         sta VERA_DATA
@@ -66,7 +66,7 @@ Load:   lda #$00
 
 Loop:   lda SPRITE0,y
         sta VERA_DATA
-        dey
+        iny
         bne Loop:
         rts
 
