@@ -33,4 +33,4 @@ pause   jsr LSTID
 slut    rts
 
 
-Tekst !pet "hej 5. s.b.",13,"tak for jeres tid",0
+Tekst !pet "hej 5. s.b.",13,"hvor er det dejligt jeg må vise jer mit spil",0
