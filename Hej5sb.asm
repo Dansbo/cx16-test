@@ -2,27 +2,35 @@
 !byte $0C,$08,$0A,$00,$9E,' ','2','0','6','4',$00,$00,$00
 *=$0810
 
-CHAROUT = $FFD2
+SKRIV = $FFD2
 TMP0 = $00
 TMP1 = $01
+STTID = $FFDB
+LSTID = $FFDE
 
+        lda #147
+        jsr SKRIV                ;Ryd skærmen
 
-        ldx #<Text
-        ldy #>Text
+        ldx #<Tekst              ;Lad X være start af Tekst
+        ldy #>Tekst
         stx TMP0
         sty TMP1
 
         ldy #0
 
-loop    !byte $FF
-        lda (TMP0), Y
+loop    lda (TMP0), Y
         cmp #0
         beq slut
-        jsr CHAROUT
+        jsr SKRIV
+        lda #0
+        jsr STTID
+pause   jsr LSTID
+        cmp #20
+        bne pause
         iny
         jmp loop
 
 slut    rts
 
 
-Text !pet "hej 5. s.b.",0
+Tekst !pet "hej 5. s.b.",13,"tak for jeres tid",0
