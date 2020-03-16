@@ -6,6 +6,8 @@
 
 YM_REG=$9FE0
 YM_DATA=$9FE1
+
+
 !byte $FF
 ;Reset sound chip
         ldy #0
@@ -19,14 +21,14 @@ reset:  cpy #255
 
 sound:
 ;Enable L/R
-        ldx #$20
+        ldx Channel
         stx YM_REG
-        ldx #215
+        ldx #$D7
         stx YM_DATA
 ;Set FREQUENCY
         ldx #$28
         stx YM_REG
-        ldx #80
+        ldx #76
         stx YM_DATA
 ;Set VOLUME
         ldx #$60
@@ -36,7 +38,7 @@ sound:
 ;Set ATTACK
         ldx #$80
         stx YM_REG
-        ldx #$18
+        ldx #$FF
         stx YM_DATA
 ;Set RELEASE
         ldx #$E0
@@ -49,3 +51,4 @@ sound:
         stx YM_DATA
 
         rts
+Channel !byte $20,$21,$22,$23
