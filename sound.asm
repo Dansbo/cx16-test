@@ -4,12 +4,14 @@
 !byte $0C,$08,$0A,$00,$9E,' ','2','0','6','4',$00,$00,$00
 *=$0810
 
-YM_REG=$9FE0
-YM_DATA=$9FE1
-CHAN=$20
-CHAN1=$21
-CHAN2=$22
-CHAN3=$23
+YM_REG          = $9FE0
+YM_DATA         = $9FE1
+CHAN            = $20
+CHAN1           = $21
+CHAN2           = $22
+CHAN3           = $23
+SETTIM		= $FFDB
+RDTIM		= $FFDE
 
 
 !byte $FF
@@ -25,14 +27,14 @@ reset:  cpy #255
 
 sound:
 ;Enable L/R
-        ldx CHAN
+        ldx #CHAN
         stx YM_REG
         ldx #$D7
         stx YM_DATA
 ;Set FREQUENCY
         ldx #$28
         stx YM_REG
-        ldx #76
+        ldx #80
         stx YM_DATA
 ;Set VOLUME
         ldx #$60
@@ -42,7 +44,7 @@ sound:
 ;Set ATTACK
         ldx #$80
         stx YM_REG
-        ldx #$FF
+        ldx #$18
         stx YM_DATA
 ;Set RELEASE
         ldx #$E0
@@ -52,6 +54,18 @@ sound:
 ;Note on
         ldx #$08
         stx YM_REG
+        stx YM_DATA
+
+Delay   lda #0
+        jsr SETTIM
+Pause   jsr RDTIM
+        cmp #59
+        bne Pause
+
+;Set FREQUENCY
+        ldx #$28
+        stx YM_REG
+        ldx #85
         stx YM_DATA
 
         rts
