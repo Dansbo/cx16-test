@@ -26,7 +26,8 @@ sound:
 ;Set FREQUENCY
         ldx #$28
         stx YM_REG
-        stz YM_DATA
+        ldx #80
+        stx YM_DATA
 ;Set VOLUME
         ldx #$60
         stx YM_REG
