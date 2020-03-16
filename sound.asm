@@ -6,6 +6,10 @@
 
 YM_REG=$9FE0
 YM_DATA=$9FE1
+CHAN=$20
+CHAN1=$21
+CHAN2=$22
+CHAN3=$23
 
 
 !byte $FF
@@ -21,7 +25,7 @@ reset:  cpy #255
 
 sound:
 ;Enable L/R
-        ldx Channel
+        ldx CHAN
         stx YM_REG
         ldx #$D7
         stx YM_DATA
