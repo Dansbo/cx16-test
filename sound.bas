@@ -1,3 +1,7 @@
+;Found this basic code at:
+;https://gist.github.com/Frank-Buss/1066eaaf8b0e2a718fcf38bf64a6ce2e
+
+
 100 REM RESET SOUND CHIP
 110 FOR I = 0 TO 255 : POKE $9FE0, I : POKE $9FE1, 0 : NEXT
 120 REM GONG
