@@ -55,14 +55,14 @@ sound:
         ldx #$08
         stx YM_REG
         stx YM_DATA
-        jsr Delay
+        jsr Delay:
 
 ;Set FREQUENCY
         ldx #$28
         stx YM_REG
         ldx #85
         stx YM_DATA
-        jsr Delay
+        jsr Delay:
 
 ;Noteoff
         ldx #$08
@@ -71,7 +71,7 @@ sound:
 
         rts
 
-Delay   lda #0
+Delay:  lda #0
         jsr SETTIM
 Pause   jsr RDTIM
         cmp #59
