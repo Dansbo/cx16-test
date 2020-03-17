@@ -74,7 +74,7 @@ sound:
 Delay:  lda #0
         jsr SETTIM
 Pause   jsr RDTIM
-        cmp #59
+        cmp #30
         bne Pause
         rts
 Channel !byte $20,$21,$22,$23
