@@ -55,18 +55,26 @@ sound:
         ldx #$08
         stx YM_REG
         stx YM_DATA
-
-Delay   lda #0
-        jsr SETTIM
-Pause   jsr RDTIM
-        cmp #59
-        bne Pause
+        jsr Delay
 
 ;Set FREQUENCY
         ldx #$28
         stx YM_REG
         ldx #85
         stx YM_DATA
+        jsr Delay
 
+;Noteoff
+        ldx #$08
+        stx YM_REG
+        stz YM_DATA
+
+        rts
+
+Delay   lda #0
+        jsr SETTIM
+Pause   jsr RDTIM
+        cmp #59
+        bne Pause
         rts
 Channel !byte $20,$21,$22,$23
