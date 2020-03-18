@@ -34,7 +34,7 @@ sound:
 ;Set FREQUENCY
         ldx #$28
         stx YM_REG
-        ldx #80
+        ldx #75
         stx YM_DATA
 ;Set VOLUME
         ldx #$60
@@ -46,6 +46,12 @@ sound:
         stx YM_REG
         ldx #$18
         stx YM_DATA
+
+        ldx #$1B
+        stx YM_REG
+        ldx #3
+        sta YM_DATA
+
 ;Set RELEASE
         ldx #$E0
         stx YM_REG
