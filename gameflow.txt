@@ -1,0 +1,17 @@
+1. Splash screen
+2. Load gamesplash
+3. randomize spaceships
+4. fire function
+5. decrement shot
+6. shot=0
+7. collision detect
+8. Score increment
+9. Bullet routine
+	a. horizontal
+	b. a+vertical
+10. back to 5
+11. if 6=true  then 13
+12. back to 4
+13. Endbox
+
+
